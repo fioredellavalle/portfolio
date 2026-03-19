@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Esperienze — Fiorella Della Valle</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{width:100%;overflow-x:hidden;}
+    body{font-family:'Cormorant Garamond',serif;color:#221810;background:url('assets/images/esperienze-bg.webp') center top/cover;background-color:#A8C890;}
+    @media(max-width:768px){body{background-attachment:scroll;}}
+    @media(min-width:769px){body{background-attachment:fixed;}}
+    body::before{content:'';position:fixed;inset:0;background:rgba(245,237,216,0.50);pointer-events:none;z-index:0;}
+    @media(hover:hover){
+      *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,auto;}
+      a,button{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,pointer;}
+    }
+    nav,body>*{position:relative;z-index:1;}
+    .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(245,237,216,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(200,152,58,0.25);box-shadow:0 2px 20px rgba(34,24,16,0.08);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#221810;text-decoration:none;}
+    .nav-links{display:flex;gap:24px;list-style:none;}
+    .nav-links a{font-family:'Quicksand',sans-serif;font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#7A6848;text-decoration:none;transition:color 0.2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:0.5px;background:#C8983A;transform:scaleX(0);transition:transform 0.3s;}
+    .nav-links a:hover{color:#221810;} .nav-links a:hover::after{transform:scaleX(1);}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:22px;height:2px;background:#221810;border-radius:1px;transition:all 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(245,237,216,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(200,152,58,0.25);padding:1rem 0;flex-direction:column;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:'Quicksand',sans-serif;font-size:0.8rem;letter-spacing:2.5px;text-transform:uppercase;color:#7A6848;text-decoration:none;padding:14px 32px;border-bottom:0.5px solid rgba(200,152,58,0.1);}
+    .mobile-menu a:last-child{border-bottom:none;}
+    .page-hero{width:100%;padding:120px 5% 60px;text-align:center;position:relative;z-index:1;}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.5rem);color:#221810;text-shadow:0 2px 12px rgba(245,237,216,0.8);letter-spacing:1px;}
+    .esp-section{padding:0 5% 80px;max-width:1000px;margin:0 auto;}
+    .exp-list{display:flex;flex-direction:column;gap:2rem;}
+    .exp-card{background:rgba(245,237,216,0.90);border:0.5px solid rgba(200,152,58,0.3);border-radius:12px;box-shadow:0 4px 20px rgba(34,24,16,0.15);transition:all 0.4s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden;display:grid;grid-template-columns:200px 1fr;backdrop-filter:blur(4px);}
+    .exp-card::after{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#C8983A,#8A2018);border-radius:4px 0 0 4px;}
+    .exp-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(34,24,16,0.22);border-color:rgba(200,152,58,0.6);}
+    .exp-logo-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:1.2rem;border-right:0.5px solid rgba(200,152,58,0.2);background:rgba(245,237,216,0.75);min-height:200px;}
+    .exp-logo-main{width:100%;max-width:160px;max-height:100px;object-fit:contain;opacity:0.85;filter:grayscale(15%);transition:all 0.3s;}
+    .exp-card:hover .exp-logo-main{opacity:1;filter:grayscale(0%);}
+    .exp-logo-fallback{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#C8983A;text-align:center;line-height:1.3;}
+    .exp-sub-logos{display:flex;flex-direction:row;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;}
+    .exp-sub-logos img{height:55px;width:auto;max-width:90px;object-fit:contain;opacity:0.75;filter:grayscale(15%);transition:all 0.3s;}
+    .exp-card:hover .exp-sub-logos img{opacity:1;filter:grayscale(0%);}
+    .exp-content-col{padding:2rem 2rem 1.8rem;}
+    .exp-role{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:normal;font-size:1.55rem;color:#221810;margin-bottom:1rem;}
+    .exp-desc{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:#4A3828;line-height:1.75;margin-bottom:1.2rem;}
+    .exp-list-items{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:1.6rem;}
+    .exp-list-items li{font-size:0.98rem;color:#4A3828;line-height:1.6;padding-left:18px;position:relative;}
+    .exp-list-items li::before{content:'✦';position:absolute;left:0;color:#C8983A;font-size:0.55rem;top:8px;}
+    .btn-rabbit{display:inline-flex;align-items:center;gap:10px;font-family:'Quicksand',sans-serif;font-size:0.78rem;letter-spacing:1.8px;color:#F5EDD8;background:linear-gradient(135deg,#5A3A18,#3A2010);border:1px solid rgba(200,152,58,0.35);padding:10px 22px;border-radius:40px;text-decoration:none;box-shadow:0 4px 20px rgba(34,24,16,0.25);transition:all 0.3s;-webkit-tap-highlight-color:transparent;}
+    .btn-rabbit .rabbit{display:inline-block;animation:hop 2s ease-in-out infinite;}
+    @keyframes hop{0%,100%{transform:translateY(0);}45%{transform:translateY(-5px);}}
+    footer{background:#1C1410;padding:2rem 5%;text-align:center;position:relative;z-index:1;}
+    .footer-label{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.1rem;font-style:italic;text-transform:uppercase;color:rgba(245,237,216,0.7);letter-spacing:2px;margin-bottom:1rem;}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+    .footer-link{display:inline-flex;align-items:center;gap:8px;font-family:'Quicksand',sans-serif;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(200,152,58,0.6);text-decoration:none;border:0.5px solid rgba(200,152,58,0.25);padding:8px 18px;border-radius:30px;transition:all 0.3s;}
+    .footer-icon{width:18px;height:18px;object-fit:contain;opacity:0.8;flex-shrink:0;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){
+      .nav-links{display:none;} .hamburger{display:flex;} .site-nav{padding:12px 20px;}
+      .page-hero{padding:90px 5% 40px;}
+      .exp-card{grid-template-columns:1fr;}
+      .exp-logo-col{border-right:none;border-bottom:0.5px solid rgba(200,152,58,0.2);padding:1.2rem;flex-direction:row;gap:16px;justify-content:flex-start;min-height:auto;}
+      .exp-logo-main{max-width:100px;max-height:60px;}
+      .exp-content-col{padding:1.4rem 1.4rem 1.4rem;}
+      .exp-role{font-size:1.3rem;}
+    }
+    @media(max-width:480px){
+      .footer-links{flex-direction:column;align-items:center;}
+      .exp-desc{font-size:0.96rem;}
+      .exp-list-items li{font-size:0.92rem;}
+    }
+  </style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Fiorella Della Valle</a>
+  <ul class="nav-links">
+    <li><a href="stanza.html">Home</a></li>
+    <li><a href="chi-sono.html">Chi sono</a></li>
+    <li><a href="esperienze.html">Esperienze</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="hobby.html">Hobby</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="stanza.html">Home</a>
+  <a href="chi-sono.html">Chi sono</a>
+  <a href="esperienze.html">Esperienze</a>
+  <a href="progetti.html">Progetti</a>
+  <a href="hobby.html">Hobby</a>
+</div>
+<div class="page-hero"><h1>Esperienze lavorative</h1></div>
+<div class="esp-section">
+  <div class="exp-list">
+    <div class="exp-card reveal">
+      <div class="exp-logo-col">
+        <img src="assets/images/logo-cocacola.png" alt="Coca-Cola HBC" class="exp-logo-main" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="exp-logo-fallback" style="display:none;">Coca-Cola HBC</span>
+        <div class="exp-sub-logos">
+          <img src="assets/images/logo-lurisia.webp" alt="Lurisia"/>
+          <img src="assets/images/logo-kinley.webp" alt="Kinley"/>
+        </div>
+      </div>
+      <div class="exp-content-col">
+        <p class="exp-role">Junior Brand Manager</p>
+        <p class="exp-desc">Brand management per Lurisia Premium Beverages e Kinley, con focus su attività di marketing per le Olimpiadi Invernali 2026.</p>
+        <ul class="exp-list-items">
+          <li>Sviluppo di attività di marketing per le Olimpiadi Invernali 2026</li>
+          <li>Organizzazione di eventi di brand: Aperitivo Festival, Milano Wine Week, Federazione Italiana Cuochi, Roma Bar Show, Horeca Expoforum</li>
+          <li>Scrittura creativa per articoli di magazine e sviluppo di selling stories</li>
+          <li>Management di clienti e fornitori</li>
+          <li>Supporto ad attività di sell-in e sell-out in OOH</li>
+        </ul>
+        <a href="https://www.canva.com/design/DAHEayVlLNA/dvSI6QPx_01hrMucLgntXw/view?utm_content=DAHEayVlLNA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h03b30115d0" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-logo-col">
+        <img src="assets/images/logo-dami.png" alt="Dami srl" class="exp-logo-main" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="exp-logo-fallback" style="display:none;">Dami srl</span>
+      </div>
+      <div class="exp-content-col">
+        <p class="exp-role">Digital Marketing</p>
+        <p class="exp-desc">Lavorando in team, abbiamo realizzato una campagna valoriale per il suolificio marchigiano Dami srl.</p>
+        <ul class="exp-list-items">
+          <li>Analisi dei competitor</li>
+          <li>Creazione della digital content strategy</li>
+          <li>Sviluppo di differenti strategie narrative (claim e format di pubblicazione)</li>
+        </ul>
+        <a href="https://www.canva.com/design/DAGK2BwMRgc/Ze8H11Qevh1rbjhYf55OUg/view?utm_content=DAGK2BwMRgc&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-logo-col">
+        <img src="assets/images/logo-artemida.png" alt="Artemida Experience" class="exp-logo-main" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="exp-logo-fallback" style="display:none;">Artemida Experience</span>
+      </div>
+      <div class="exp-content-col">
+        <p class="exp-role">Event Planner</p>
+        <p class="exp-desc">Collaborazione con Artemida Experience, una realtà che organizza eventi d'arte.</p>
+        <ul class="exp-list-items">
+          <li>Pianificazione aziendale: analisi costi, creazione format sui social, decisione partnerships, ideazione di nuove mostre, ricerca nuovi spazi per eventi</li>
+          <li>Creazione di contenuti sui social: reels e post (@artemida_experience)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p class="footer-label">Contatti</p>
+  <div class="footer-links">
+    <a href="mailto:fiorelladellavalle@gmail.com" class="footer-link"><img src="assets/images/icon-mail.png" class="footer-icon" onerror="this.style.display='none'"/> fiorelladellavalle@gmail.com</a>
+    <a href="https://www.linkedin.com/in/fiorelladellavalle/" target="_blank" class="footer-link"><img src="assets/images/icon-linkedin.webp" class="footer-icon" onerror="this.style.display='none'"/> LinkedIn</a>
+  </div>
+</footer>
+<script>
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');}));
+(function(){const els=document.querySelectorAll('.reveal');const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});els.forEach(el=>obs.observe(el));})();
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

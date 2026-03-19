@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chi Sono — Fiorella Della Valle</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{width:100%;overflow-x:hidden;}
+    body{font-family:'Cormorant Garamond',serif;background:#F5EDD8;color:#221810;}
+    @media(hover:hover){
+      *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,auto;}
+      a,button{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,pointer;}
+    }
+
+    /* NAV */
+    .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(245,237,216,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(200,152,58,0.25);box-shadow:0 2px 20px rgba(34,24,16,0.08);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#221810;text-decoration:none;}
+    .nav-links{display:flex;gap:24px;list-style:none;}
+    .nav-links a{font-family:'Quicksand',sans-serif;font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#7A6848;text-decoration:none;transition:color 0.2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:0.5px;background:#C8983A;transform:scaleX(0);transition:transform 0.3s;}
+    .nav-links a:hover{color:#221810;} .nav-links a:hover::after{transform:scaleX(1);}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:22px;height:2px;background:#221810;border-radius:1px;transition:all 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(245,237,216,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(200,152,58,0.25);padding:1rem 0;flex-direction:column;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:'Quicksand',sans-serif;font-size:0.8rem;letter-spacing:2.5px;text-transform:uppercase;color:#7A6848;text-decoration:none;padding:14px 32px;border-bottom:0.5px solid rgba(200,152,58,0.1);}
+    .mobile-menu a:last-child{border-bottom:none;}
+
+    /* HERO */
+    .page-hero{width:100%;height:320px;margin-top:56px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .page-hero-bg-fallback{position:absolute;inset:0;background:linear-gradient(160deg,#C8D8E8 0%,#E8D8B0 50%,#C8B890 100%);}
+    .page-hero-bg{position:absolute;inset:0;background:url('assets/images/chi-sono-bg.webp') center/cover no-repeat;}
+    .page-hero-vignette{position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,24,16,0.28) 0%,rgba(34,24,16,0.52) 100%);}
+    .page-hero-content{position:relative;z-index:5;text-align:center;padding:2rem;}
+    .page-hero-content h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.2rem);color:#F5EDD8;text-shadow:0 2px 20px rgba(34,24,16,0.5);}
+
+    /* LAYOUT */
+    .about-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start;padding:80px 6%;max-width:1100px;margin:0 auto;}
+    .about-photo-col{position:sticky;top:90px;}
+    .profile-photo-wrap{position:relative;display:inline-block;width:100%;}
+    .profile-photo{width:100%;max-width:360px;border-radius:12px;border:2px solid rgba(200,152,58,0.3);box-shadow:0 8px 32px rgba(34,24,16,0.18),8px 8px 0 rgba(200,152,58,0.12);display:block;}
+    .profile-photo-wrap::after{content:'';position:absolute;top:12px;left:12px;right:-12px;bottom:-12px;border:0.5px solid rgba(200,152,58,0.22);border-radius:12px;z-index:-1;}
+    .about-text-col{padding-top:0.5rem;}
+    .body-text{font-family:'Cormorant Garamond',serif;font-size:1.12rem;line-height:1.8;color:#4A3828;margin-bottom:1rem;}
+    .keywords-label,.tools-label{font-family:'Quicksand',sans-serif;font-size:0.65rem;letter-spacing:3.5px;text-transform:uppercase;color:#7A6848;margin-bottom:0.8rem;margin-top:2rem;}
+    .keywords{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:0.5rem;}
+    .keyword{font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-style:italic;color:#F5EDD8;background:linear-gradient(135deg,#4A3828,#221810);padding:8px 18px;border-radius:30px;border:0.5px solid rgba(200,152,58,0.3);}
+    .tools-grid{display:flex;flex-wrap:wrap;gap:10px;}
+    .tool-badge{display:flex;align-items:center;gap:8px;font-family:'Quicksand',sans-serif;font-size:0.8rem;color:#4A3828;background:rgba(200,152,58,0.07);border:0.5px solid rgba(200,152,58,0.3);padding:7px 14px;border-radius:30px;transition:all 0.3s;}
+    .tool-logo{width:20px;height:20px;object-fit:contain;flex-shrink:0;}
+
+    /* FOOTER */
+    footer{background:#1C1410;padding:2rem 5%;text-align:center;}
+    .footer-label{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.1rem;font-style:italic;text-transform:uppercase;color:rgba(245,237,216,0.7);letter-spacing:2px;margin-bottom:1rem;}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+    .footer-link{display:inline-flex;align-items:center;gap:8px;font-family:'Quicksand',sans-serif;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(200,152,58,0.6);text-decoration:none;border:0.5px solid rgba(200,152,58,0.25);padding:8px 18px;border-radius:30px;transition:all 0.3s;}
+    .footer-icon{width:18px;height:18px;object-fit:contain;opacity:0.8;flex-shrink:0;}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* MOBILE */
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .site-nav{padding:12px 20px;}
+      .page-hero{height:220px;}
+      .about-layout{grid-template-columns:1fr;gap:2rem;padding:40px 5%;}
+      .about-photo-col{position:static;text-align:center;}
+      .profile-photo{max-width:220px;margin:0 auto;}
+      .profile-photo-wrap::after{display:none;}
+      .body-text{font-size:1.05rem;}
+    }
+    @media(max-width:480px){
+      .keywords{gap:8px;}
+      .keyword{font-size:0.82rem;padding:6px 14px;}
+      .tool-badge{font-size:0.72rem;padding:6px 10px;}
+      .footer-links{flex-direction:column;align-items:center;}
+    }
+  </style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Fiorella Della Valle</a>
+  <ul class="nav-links">
+    <li><a href="stanza.html">Home</a></li>
+    <li><a href="chi-sono.html">Chi sono</a></li>
+    <li><a href="esperienze.html">Esperienze</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="hobby.html">Hobby</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="stanza.html">Home</a>
+  <a href="chi-sono.html">Chi sono</a>
+  <a href="esperienze.html">Esperienze</a>
+  <a href="progetti.html">Progetti</a>
+  <a href="hobby.html">Hobby</a>
+</div>
+<div class="page-hero">
+  <div class="page-hero-bg-fallback"></div>
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-vignette"></div>
+  <div class="page-hero-content"><h1>Chi sono</h1></div>
+</div>
+<div class="about-layout">
+  <div class="about-photo-col reveal">
+    <div class="profile-photo-wrap">
+      <img src="assets/images/foto-profilo.jpeg" alt="Fiorella Della Valle" class="profile-photo"/>
+    </div>
+  </div>
+  <div class="about-text-col">
+    <p class="body-text reveal">Sono dottoressa magistrale in marketing e comunicazione d'impresa, laurea conseguita presso l'Università Cattolica, con una tesi in cui ho sviluppato un servizio online per la silver economy.</p>
+    <p class="body-text reveal">Mi appassiona il marketing, lo storytelling ed il project management; in ogni progetto il mio obiettivo è unire creatività ed obiettivi concreti. Mi dedico con entusiasmo a ideare messaggi efficaci, contenuti accattivanti e progetti visivi che sappiano raccontare storie e creare connessioni autentiche.</p>
+    <p class="keywords-label reveal">Le parole che mi riassumono</p>
+    <div class="keywords reveal">
+      <span class="keyword">Organizzazione</span>
+      <span class="keyword">Creatività</span>
+      <span class="keyword">Goal oriented</span>
+      <span class="keyword">Thinking out of the box</span>
+    </div>
+    <p class="tools-label reveal">Strumenti che utilizzo</p>
+    <div class="tools-grid reveal">
+      <span class="tool-badge"><img src="assets/images/logo-excel.png" alt="Excel" class="tool-logo" onerror="this.style.display='none'"/> Excel</span>
+      <span class="tool-badge"><img src="assets/images/logo-powerpoint.png" alt="PowerPoint" class="tool-logo" onerror="this.style.display='none'"/> PowerPoint</span>
+      <span class="tool-badge"><img src="assets/images/logo-canva.png" alt="Canva" class="tool-logo" onerror="this.style.display='none'"/> Canva</span>
+      <span class="tool-badge"><img src="assets/images/logo-capcut.png" alt="CapCut" class="tool-logo" onerror="this.style.display='none'"/> CapCut</span>
+      <span class="tool-badge"><img src="assets/images/logo-edits.png" alt="Edits" class="tool-logo" onerror="this.style.display='none'"/> Edits</span>
+      <span class="tool-badge"><img src="assets/images/logo-meta.png" alt="Meta" class="tool-logo" onerror="this.style.display='none'"/> Meta</span>
+      <span class="tool-badge"><img src="assets/images/logo-tiktok.png" alt="TikTok" class="tool-logo" onerror="this.style.display='none'"/> TikTok</span>
+      <span class="tool-badge"><img src="assets/images/logo-sharepoint.png" alt="SharePoint" class="tool-logo" onerror="this.style.display='none'"/> SharePoint</span>
+    </div>
+  </div>
+</div>
+<footer>
+  <p class="footer-label">Contatti</p>
+  <div class="footer-links">
+    <a href="mailto:fiorelladellavalle@gmail.com" class="footer-link"><img src="assets/images/icon-mail.png" class="footer-icon" onerror="this.style.display='none'"/> fiorelladellavalle@gmail.com</a>
+    <a href="https://www.linkedin.com/in/fiorelladellavalle/" target="_blank" class="footer-link"><img src="assets/images/icon-linkedin.webp" class="footer-icon" onerror="this.style.display='none'"/> LinkedIn</a>
+  </div>
+</footer>
+<script>
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');}));
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

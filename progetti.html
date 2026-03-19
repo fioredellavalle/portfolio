@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Progetti — Fiorella Della Valle</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{width:100%;overflow-x:hidden;}
+    body{font-family:'Cormorant Garamond',serif;color:#221810;background:url('assets/images/progetti-bg.webp') center top/cover;background-color:#6A8840;}
+    @media(max-width:768px){body{background-attachment:scroll;}}
+    @media(min-width:769px){body{background-attachment:fixed;}}
+    body::before{content:'';position:fixed;inset:0;background:rgba(245,237,216,0.50);pointer-events:none;z-index:0;}
+    @media(hover:hover){
+      *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,auto;}
+      a,button{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,pointer;}
+    }
+    nav,body>*{position:relative;z-index:1;}
+    .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(245,237,216,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(200,152,58,0.25);box-shadow:0 2px 20px rgba(34,24,16,0.08);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#221810;text-decoration:none;}
+    .nav-links{display:flex;gap:24px;list-style:none;}
+    .nav-links a{font-family:'Quicksand',sans-serif;font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#7A6848;text-decoration:none;transition:color 0.2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:0.5px;background:#C8983A;transform:scaleX(0);transition:transform 0.3s;}
+    .nav-links a:hover{color:#221810;} .nav-links a:hover::after{transform:scaleX(1);}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:22px;height:2px;background:#221810;border-radius:1px;transition:all 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(245,237,216,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(200,152,58,0.25);padding:1rem 0;flex-direction:column;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:'Quicksand',sans-serif;font-size:0.8rem;letter-spacing:2.5px;text-transform:uppercase;color:#7A6848;text-decoration:none;padding:14px 32px;border-bottom:0.5px solid rgba(200,152,58,0.1);}
+    .mobile-menu a:last-child{border-bottom:none;}
+    .page-hero{width:100%;padding:120px 5% 60px;text-align:center;position:relative;z-index:1;}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.5rem);color:#221810;text-shadow:0 2px 12px rgba(245,237,216,0.8);letter-spacing:1px;}
+    .proj-section{padding:0 5% 80px;max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+    .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
+    .project-card{background:rgba(245,237,216,0.90);border:0.5px solid rgba(200,152,58,0.3);border-radius:12px;padding:1.8rem;box-shadow:0 4px 20px rgba(34,24,16,0.14);transition:all 0.4s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;gap:0.9rem;position:relative;overflow:hidden;backdrop-filter:blur(4px);}
+    .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C8983A,#8A2018,#C8983A);opacity:0;transition:opacity 0.3s;}
+    .project-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(34,24,16,0.2);border-color:rgba(200,152,58,0.6);}
+    .project-card:hover::before{opacity:1;}
+    .project-card h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#221810;}
+    .project-card p{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#4A3828;line-height:1.7;flex:1;}
+    .tag{display:inline-block;font-family:'Quicksand',sans-serif;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:#C8983A;border:0.5px solid rgba(200,152,58,0.5);padding:4px 12px;border-radius:20px;}
+    .btn-rabbit{display:inline-flex;align-items:center;gap:10px;font-family:'Quicksand',sans-serif;font-size:0.78rem;letter-spacing:1.8px;color:#F5EDD8;background:linear-gradient(135deg,#5A3A18,#3A2010);border:1px solid rgba(200,152,58,0.35);padding:9px 20px;border-radius:40px;text-decoration:none;align-self:flex-start;box-shadow:0 4px 20px rgba(34,24,16,0.25);transition:all 0.3s;-webkit-tap-highlight-color:transparent;}
+    .btn-rabbit .rabbit{display:inline-block;animation:hop 2s ease-in-out infinite;}
+    @keyframes hop{0%,100%{transform:translateY(0);}45%{transform:translateY(-5px);}}
+    footer{background:#1C1410;padding:2rem 5%;text-align:center;position:relative;z-index:1;}
+    .footer-label{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.1rem;font-style:italic;text-transform:uppercase;color:rgba(245,237,216,0.7);letter-spacing:2px;margin-bottom:1rem;}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+    .footer-link{display:inline-flex;align-items:center;gap:8px;font-family:'Quicksand',sans-serif;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(200,152,58,0.6);text-decoration:none;border:0.5px solid rgba(200,152,58,0.25);padding:8px 18px;border-radius:30px;transition:all 0.3s;}
+    .footer-icon{width:18px;height:18px;object-fit:contain;opacity:0.8;flex-shrink:0;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){
+      .nav-links{display:none;} .hamburger{display:flex;} .site-nav{padding:12px 20px;}
+      .page-hero{padding:90px 5% 40px;}
+      .proj-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:480px){
+      .project-card{padding:1.4rem;}
+      .footer-links{flex-direction:column;align-items:center;}
+    }
+  </style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Fiorella Della Valle</a>
+  <ul class="nav-links">
+    <li><a href="stanza.html">Home</a></li>
+    <li><a href="chi-sono.html">Chi sono</a></li>
+    <li><a href="esperienze.html">Esperienze</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="hobby.html">Hobby</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="stanza.html">Home</a>
+  <a href="chi-sono.html">Chi sono</a>
+  <a href="esperienze.html">Esperienze</a>
+  <a href="progetti.html">Progetti</a>
+  <a href="hobby.html">Hobby</a>
+</div>
+<div class="page-hero"><h1>I miei progetti</h1></div>
+<div class="proj-section">
+  <div class="proj-grid">
+    <div class="project-card reveal"><span class="tag">Social Media</span><h3>VoiceCatt</h3><p>Creazione di post per le pagine social della radio dell'Università Cattolica.</p><a href="https://www.canva.com/design/DAGC9nV2uOU/ldUCAbQsW20uY-mECMyFzg/view?utm_content=DAGC9nV2uOU&utm_campaign=designshare&utm_medium=link&utm_source=editor#1" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a></div>
+    <div class="project-card reveal"><span class="tag">Content & Copy</span><h3>PsyLab</h3><p>Esempi di post e copy realizzati per il centro di ricerca interdisciplinare PsyLab.</p><a href="https://www.canva.com/design/DAGK1zcbFvQ/WR1HWjWWYefYAGItqBmOeg/view?utm_content=DAGK1zcbFvQ&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a></div>
+    <div class="project-card reveal"><span class="tag">Graphic Design</span><h3>Nessun dorma</h3><p>Grafiche realizzate per il concerto per sensibilizzazione sul tema della violenza di genere.</p><a href="https://www.canva.com/design/DAGC9RThvxc/6ZBGdY7fx81OsKCcVUdJPw/edit" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a></div>
+    <div class="project-card reveal"><span class="tag">Ricerca</span><h3>6 gradi di separazione</h3><p>Analisi delle conversazioni svolta per il progetto di Psicologia sociale della comunicazione.</p><a href="https://www.canva.com/design/DAGC92YRRes/500TfkVzE5TZJOoOqr6wIw/view?utm_content=DAGC92YRRes&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a></div>
+    <div class="project-card reveal"><span class="tag">Tesi</span><h3>Il mercato dell'arte</h3><p>Progetto di tesi sui motivi di acquisto dell'arte, la sua brand identity e gli NFT.</p><a href="https://www.canva.com/design/DAFb3YiAiXs/NOeznp7tokkP_DtpFV4Ffg/view?utm_content=DAFb3YiAiXs&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a></div>
+    <div class="project-card reveal"><span class="tag">Ricerca · AI</span><h3>La generatività</h3><p>Ricerca realizzata con l'obiettivo di studiare le differenze tra la generatività artificiale (AI) e la generatività umana.</p><a href="https://www.canva.com/design/DAF8NpGscHA/Bm-6mrZuMS30iK7xyO1viA/view?utm_content=DAF8NpGscHA&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a></div>
+  </div>
+</div>
+<footer>
+  <p class="footer-label">Contatti</p>
+  <div class="footer-links">
+    <a href="mailto:fiorelladellavalle@gmail.com" class="footer-link"><img src="assets/images/icon-mail.png" class="footer-icon" onerror="this.style.display='none'"/> fiorelladellavalle@gmail.com</a>
+    <a href="https://www.linkedin.com/in/fiorelladellavalle/" target="_blank" class="footer-link"><img src="assets/images/icon-linkedin.webp" class="footer-icon" onerror="this.style.display='none'"/> LinkedIn</a>
+  </div>
+</footer>
+<script>
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');}));
+(function(){const els=document.querySelectorAll('.reveal');const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});els.forEach(el=>obs.observe(el));})();
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

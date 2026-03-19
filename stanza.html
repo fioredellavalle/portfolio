@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fiorella Della Valle — Portfolio</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{width:100%;overflow-x:hidden;}
+    body{font-family:'Cormorant Garamond',serif;}
+
+    @media(hover:hover){
+      *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,auto;}
+      a,button{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,pointer;}
+    }
+
+    .stanza-hero{width:100%;min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem 5rem;}
+    .stanza-bg-fallback{position:absolute;inset:0;background:linear-gradient(160deg,#C8B890 0%,#A89060 30%,#D0C4A0 60%,#B8A870 100%);}
+    .stanza-bg{position:absolute;inset:0;background:url('assets/images/stanza-bg.webp') center/cover no-repeat;}
+    @media(max-width:768px){.stanza-bg{background-attachment:scroll;}}
+    @media(min-width:769px){.stanza-bg{background-attachment:fixed;}}
+    .stanza-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,transparent 20%,rgba(26,18,10,0.38) 100%);pointer-events:none;z-index:2;}
+
+    .rabbit-fixed{position:fixed;bottom:28px;left:24px;z-index:20;font-size:2.6rem;pointer-events:none;animation:rabbitBreath 3s ease-in-out infinite;filter:drop-shadow(2px 3px 8px rgba(0,0,0,0.25));transform:scaleX(-1);}
+    @keyframes rabbitBreath{0%,100%{transform:scaleX(-1) translateY(0);}50%{transform:scaleX(-1) translateY(-5px);}}
+    .rabbit-bubble{position:fixed;left:90px;bottom:32px;z-index:21;background:rgba(245,237,216,0.96);border:0.5px solid rgba(200,152,58,0.5);border-radius:12px 12px 12px 2px;padding:9px 14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.88rem;color:#4A3828;box-shadow:0 4px 16px rgba(34,24,16,0.15);max-width:200px;line-height:1.4;opacity:0;pointer-events:none;transition:opacity 0.5s ease;}
+    @media(max-width:480px){.rabbit-bubble{left:72px;bottom:24px;font-size:0.78rem;max-width:160px;}}
+
+    /* NAV */
+    .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(245,237,216,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(200,152,58,0.25);box-shadow:0 2px 20px rgba(34,24,16,0.08);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#221810;text-decoration:none;}
+    .nav-links{display:flex;gap:24px;list-style:none;}
+    .nav-links a{font-family:'Quicksand',sans-serif;font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#7A6848;text-decoration:none;transition:color 0.2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:0.5px;background:#C8983A;transform:scaleX(0);transition:transform 0.3s;}
+    .nav-links a:hover{color:#221810;}
+    .nav-links a:hover::after{transform:scaleX(1);}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:22px;height:2px;background:#221810;border-radius:1px;transition:all 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(245,237,216,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(200,152,58,0.25);padding:1rem 0;flex-direction:column;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:'Quicksand',sans-serif;font-size:0.8rem;letter-spacing:2.5px;text-transform:uppercase;color:#7A6848;text-decoration:none;padding:14px 32px;border-bottom:0.5px solid rgba(200,152,58,0.1);}
+    .mobile-menu a:last-child{border-bottom:none;}
+
+    .room-header{position:relative;z-index:10;text-align:center;margin-bottom:2rem;padding:0 1rem;}
+    .room-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:clamp(1.3rem,4vw,2.2rem);color:#F5EDD8;text-shadow:0 2px 18px rgba(0,0,0,0.6);letter-spacing:1px;}
+
+    .objects-wrap{position:relative;z-index:10;width:100%;max-width:900px;padding:0 16px;}
+    .objects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+
+    /* CARD — overflow:visible per permettere al tooltip di uscire */
+    .obj-card{
+      position:relative;
+      display:flex;flex-direction:column;
+      align-items:center;gap:14px;
+      padding:28px 12px 20px;
+      text-decoration:none;color:inherit;
+      background:radial-gradient(ellipse at 50% 0%,rgba(232,210,160,0.18) 0%,transparent 60%),linear-gradient(160deg,rgba(252,248,240,0.94) 0%,rgba(240,232,210,0.92) 100%);
+      border:0.5px solid rgba(200,152,58,0.45);
+      border-radius:14px;
+      box-shadow:0 4px 20px rgba(26,18,10,0.14);
+      transition:all 0.4s cubic-bezier(.2,.8,.2,1);
+      overflow:visible;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .obj-card::before{content:'';position:absolute;inset:6px;border-radius:10px;border:0.5px solid rgba(200,152,58,0.18);pointer-events:none;}
+    .obj-card::after{content:'✦';position:absolute;bottom:8px;right:10px;font-size:8px;color:rgba(200,152,58,0.3);pointer-events:none;}
+    @media(hover:hover){
+      .obj-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 44px rgba(26,18,10,0.22);border-color:rgba(200,152,58,0.7);}
+      .obj-card:hover .obj-icon{transform:translateY(-4px) scale(1.08);}
+      .obj-card:hover .obj-tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
+    }
+
+    .obj-icon{width:72px;height:72px;object-fit:contain;transition:transform 0.4s;position:relative;z-index:1;}
+    .obj-icon-fallback{font-size:2.8rem;line-height:1;position:relative;z-index:1;}
+    .obj-name-line{width:30px;height:0.5px;background:linear-gradient(90deg,transparent,rgba(200,152,58,0.6),transparent);position:relative;z-index:1;}
+    .obj-name{font-family:'Quicksand',sans-serif;font-weight:500;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:#5A4030;text-align:center;line-height:1.5;position:relative;z-index:1;}
+
+    /* TOOLTIP — appare sopra al hover, invisibile su mobile */
+    .obj-tooltip{
+      position:absolute;
+      bottom:calc(100% + 14px);
+      left:50%;
+      transform:translateX(-50%) translateY(8px);
+      width:220px;
+      background:rgba(22,14,6,0.94);
+      border:0.5px solid rgba(200,152,58,0.5);
+      border-radius:10px;
+      padding:13px 16px;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity 0.28s ease, transform 0.28s ease;
+      z-index:500;
+      box-shadow:0 10px 28px rgba(0,0,0,0.45);
+      backdrop-filter:blur(10px);
+    }
+    .obj-tooltip p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:rgba(245,237,216,0.93);text-align:center;line-height:1.6;margin:0;}
+    .obj-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:rgba(200,152,58,0.5);}
+
+    /* Su mobile niente tooltip */
+    @media(hover:none){
+      .obj-tooltip{display:none !important;}
+    }
+
+    /* FOOTER */
+    footer{background:#1C1410;padding:2rem 5%;text-align:center;}
+    .footer-label{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.1rem;font-style:italic;text-transform:uppercase;color:rgba(245,237,216,0.7);letter-spacing:2px;margin-bottom:1rem;}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+    .footer-link{display:inline-flex;align-items:center;gap:8px;font-family:'Quicksand',sans-serif;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(200,152,58,0.6);text-decoration:none;border:0.5px solid rgba(200,152,58,0.25);padding:8px 18px;border-radius:30px;transition:all 0.3s;}
+    .footer-link:hover{color:rgba(200,152,58,0.95);border-color:rgba(200,152,58,0.55);}
+    .footer-icon{width:18px;height:18px;object-fit:contain;opacity:0.8;flex-shrink:0;}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .site-nav{padding:12px 20px;}
+      .stanza-hero{padding:5rem 1rem 4rem;}
+      .objects-grid{grid-template-columns:1fr 1fr;gap:12px;}
+      .obj-icon{width:56px;height:56px;}
+      .rabbit-fixed{font-size:2rem;bottom:20px;left:16px;}
+    }
+    @media(max-width:400px){
+      .objects-grid{gap:10px;}
+      .obj-card{padding:18px 8px 14px;gap:10px;}
+      .obj-icon{width:48px;height:48px;}
+      .obj-name{font-size:0.65rem;letter-spacing:1.5px;}
+      .footer-links{flex-direction:column;align-items:center;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Fiorella Della Valle</a>
+  <ul class="nav-links">
+    <li><a href="stanza.html">Home</a></li>
+    <li><a href="chi-sono.html">Chi sono</a></li>
+    <li><a href="esperienze.html">Esperienze</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="hobby.html">Hobby</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="stanza.html">Home</a>
+  <a href="chi-sono.html">Chi sono</a>
+  <a href="esperienze.html">Esperienze</a>
+  <a href="progetti.html">Progetti</a>
+  <a href="hobby.html">Hobby</a>
+</div>
+
+<div class="stanza-hero">
+  <div class="stanza-bg-fallback"></div>
+  <div class="stanza-bg"></div>
+  <div class="stanza-vignette"></div>
+  <div class="rabbit-fixed">🐇</div>
+
+  <div class="room-header">
+    <h1 class="room-title">Che cosa vuoi esplorare?</h1>
+  </div>
+
+  <div class="objects-wrap">
+    <div class="objects-grid">
+
+      <a href="chi-sono.html" class="obj-card">
+        <div class="obj-tooltip"><p>Ti do la chiave del mio mondo: chi sono, skills e contatti</p></div>
+        <img src="assets/images/icon-chiave.png" alt="Chi sono" class="obj-icon"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="obj-icon-fallback" style="display:none;">🗝️</span>
+        <div class="obj-name-line"></div>
+        <span class="obj-name">Chi sono</span>
+      </a>
+
+      <a href="esperienze.html" class="obj-card">
+        <div class="obj-tooltip"><p>Gusta la lettura delle mie avventure</p></div>
+        <img src="assets/images/icon-torta.png" alt="Esperienze" class="obj-icon"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="obj-icon-fallback" style="display:none;">🎂</span>
+        <div class="obj-name-line"></div>
+        <span class="obj-name">Esperienze lavorative</span>
+      </a>
+
+      <a href="progetti.html" class="obj-card">
+        <div class="obj-tooltip"><p>Esplora i miei progetti e creiamone uno assieme!</p></div>
+        <img src="assets/images/icon-tazzina.png" alt="Progetti" class="obj-icon"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="obj-icon-fallback" style="display:none;">☕</span>
+        <div class="obj-name-line"></div>
+        <span class="obj-name">Progetti</span>
+      </a>
+
+      <a href="hobby.html" class="obj-card">
+        <div class="obj-tooltip"><p>Sfoglia le carte della mia personalità</p></div>
+        <img src="assets/images/icon-carte.png" alt="Hobbies" class="obj-icon"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="obj-icon-fallback" style="display:none;">🃏</span>
+        <div class="obj-name-line"></div>
+        <span class="obj-name">Hobbies</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-label">Contatti</p>
+  <div class="footer-links">
+    <a href="mailto:fiorelladellavalle@gmail.com" class="footer-link">
+      <img src="assets/images/icon-mail.png" class="footer-icon" onerror="this.style.display='none'"/>
+      fiorelladellavalle@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/fiorelladellavalle/" target="_blank" class="footer-link">
+      <img src="assets/images/icon-linkedin.webp" class="footer-icon" onerror="this.style.display='none'"/>
+      LinkedIn
+    </a>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
