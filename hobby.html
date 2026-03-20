@@ -36,10 +36,10 @@
     .mobile-menu a:last-child{border-bottom:none;}
     .page-hero{width:100%;padding:120px 5% 60px;text-align:center;position:relative;z-index:1;}
     .page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.5rem);color:#221810;text-shadow:0 2px 12px rgba(245,237,216,0.8);letter-spacing:1px;}
-    .hobby-section{padding:0 5% 60px;max-width:900px;margin:0 auto;position:relative;z-index:1;}
-    .hobby-intro{text-align:center;max-width:600px;margin:0 auto 3rem;}
+    .hobby-section{padding:0 5% 60px;max-width:960px;margin:0 auto;position:relative;z-index:1;}
+    .hobby-intro{text-align:center;max-width:640px;margin:0 auto 3rem;}
     .hobby-intro p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#4A3828;line-height:1.8;}
-    .hobby-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3rem;}
+    .hobby-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;}
     .hobby-photo-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1;border:0.5px solid rgba(200,152,58,0.3);box-shadow:0 4px 16px rgba(34,24,16,0.14);transition:all 0.4s cubic-bezier(.2,.8,.2,1);background:rgba(237,227,204,0.7);display:flex;align-items:center;justify-content:center;}
     .hobby-photo-item:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 12px 32px rgba(34,24,16,0.2);border-color:rgba(200,152,58,0.6);}
     .hobby-photo-item img{width:100%;height:100%;object-fit:cover;}
@@ -50,12 +50,14 @@
     .tiktok-inner{max-width:500px;margin:0 auto;}
     .tiktok-inner h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.6rem;margin-bottom:1.6rem;}
     .btn-rabbit{display:inline-flex;align-items:center;gap:10px;font-family:'Quicksand',sans-serif;font-size:0.78rem;letter-spacing:1.8px;color:#F5EDD8;background:linear-gradient(135deg,#5A3A18,#3A2010);border:1px solid rgba(200,152,58,0.35);padding:10px 22px;border-radius:40px;text-decoration:none;box-shadow:0 4px 20px rgba(34,24,16,0.25);transition:all 0.3s;-webkit-tap-highlight-color:transparent;}
+    .btn-rabbit:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(34,24,16,0.35);}
     .btn-rabbit .rabbit{display:inline-block;animation:hop 2s ease-in-out infinite;}
     @keyframes hop{0%,100%{transform:translateY(0);}45%{transform:translateY(-5px);}}
     footer{background:#1C1410;padding:2rem 5%;text-align:center;position:relative;z-index:1;}
     .footer-label{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.1rem;font-style:italic;text-transform:uppercase;color:rgba(245,237,216,0.7);letter-spacing:2px;margin-bottom:1rem;}
     .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
     .footer-link{display:inline-flex;align-items:center;gap:8px;font-family:'Quicksand',sans-serif;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(200,152,58,0.6);text-decoration:none;border:0.5px solid rgba(200,152,58,0.25);padding:8px 18px;border-radius:30px;transition:all 0.3s;}
+    .footer-link:hover{color:rgba(200,152,58,0.95);border-color:rgba(200,152,58,0.55);}
     .footer-icon{width:18px;height:18px;object-fit:contain;opacity:0.8;flex-shrink:0;}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
@@ -66,12 +68,12 @@
       .hobby-intro p{font-size:1.05rem;}
     }
     @media(max-width:480px){
-      .hobby-photos{grid-template-columns:1fr 1fr;}
       .footer-links{flex-direction:column;align-items:center;}
     }
   </style>
 </head>
 <body>
+
 <nav class="site-nav">
   <a href="index.html" class="nav-logo">Fiorella Della Valle</a>
   <ul class="nav-links">
@@ -83,6 +85,7 @@
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
   <a href="stanza.html">Home</a>
   <a href="chi-sono.html">Chi sono</a>
@@ -90,33 +93,73 @@
   <a href="progetti.html">Progetti</a>
   <a href="hobby.html">Hobby</a>
 </div>
-<div class="page-hero"><h1>I miei hobby</h1></div>
+
+<div class="page-hero">
+  <h1>I miei hobby</h1>
+</div>
+
 <div class="hobby-section">
   <div class="hobby-intro reveal">
-    <p>Adoro tutto ciò che riguarda l'arte della tavola, le miniature e la pittura. Talvolta, creo qualche contenuto sul mio profilo TikTok.</p>
+    <p>Adoro tutto ciò che riguarda l'arte della tavola, le miniature e la pittura. Mi piace anche sperimentare: dal teatro alla danza, ogni palcoscenico è una nuova avventura. Talvolta, creo qualche contenuto sul mio profilo TikTok.</p>
   </div>
+
   <div class="hobby-photos reveal">
-    <div class="hobby-photo-item"><img src="assets/images/hobby-1.jpg" alt="Hobby 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="hobby-photo-placeholder" style="display:none;"><span>🌹</span><span>Foto 1</span></div></div>
-    <div class="hobby-photo-item"><img src="assets/images/hobby-2.jpeg" alt="Hobby 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="hobby-photo-placeholder" style="display:none;"><span>🍽️</span><span>Foto 2</span></div></div>
-    <div class="hobby-photo-item"><img src="assets/images/hobby-3.jpg" alt="Hobby 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="hobby-photo-placeholder" style="display:none;"><span>✨</span><span>Foto 3</span></div></div>
-    <div class="hobby-photo-item"><img src="assets/images/hobby-4.jpg" alt="Hobby 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="hobby-photo-placeholder" style="display:none;"><span>🌸</span><span>Foto 4</span></div></div>
-    <div class="hobby-photo-item"><img src="assets/images/hobby-5.jpg" alt="Hobby 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="hobby-photo-placeholder" style="display:none;"><span>🃏</span><span>Foto 5</span></div></div>
-    <div class="hobby-photo-item"><img src="assets/images/hobby-6.jpeg" alt="Hobby 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="hobby-photo-placeholder" style="display:none;"><span>🌹</span><span>Foto 6</span></div></div>
+    <div class="hobby-photo-item">
+      <img src="assets/images/hobby-1.jpg" alt="Hobby 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="hobby-photo-placeholder" style="display:none;"><span>🌹</span><span>Foto 1</span></div>
+    </div>
+    <div class="hobby-photo-item">
+      <img src="assets/images/hobby-2.jpeg" alt="Hobby 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="hobby-photo-placeholder" style="display:none;"><span>🍽️</span><span>Foto 2</span></div>
+    </div>
+    <div class="hobby-photo-item">
+      <img src="assets/images/hobby-3.jpg" alt="Hobby 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="hobby-photo-placeholder" style="display:none;"><span>✨</span><span>Foto 3</span></div>
+    </div>
+    <div class="hobby-photo-item">
+      <img src="assets/images/hobby-4.jpg" alt="Hobby 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="hobby-photo-placeholder" style="display:none;"><span>🌸</span><span>Foto 4</span></div>
+    </div>
+    <div class="hobby-photo-item">
+      <img src="assets/images/hobby-5.jpg" alt="Hobby 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="hobby-photo-placeholder" style="display:none;"><span>🃏</span><span>Foto 5</span></div>
+    </div>
+    <div class="hobby-photo-item">
+      <img src="assets/images/hobby-6.jpeg" alt="Hobby 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="hobby-photo-placeholder" style="display:none;"><span>🌹</span><span>Foto 6</span></div>
+    </div>
+    <div class="hobby-photo-item">
+      <img src="assets/images/hobby-7.jpeg" alt="Teatro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="hobby-photo-placeholder" style="display:none;"><span>🎭</span><span>Teatro</span></div>
+    </div>
+    <div class="hobby-photo-item">
+      <img src="assets/images/hobby-8.png" alt="Danza Olimpiadi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="hobby-photo-placeholder" style="display:none;"><span>🩰</span><span>Olimpiadi</span></div>
+    </div>
   </div>
 </div>
+
 <div class="tiktok-section">
   <div class="tiktok-inner reveal">
     <h3>Seguimi su TikTok</h3>
-    <a href="https://www.tiktok.com/@fiorelladellavalle" target="_blank" class="btn-rabbit"><span class="rabbit">🐇</span> Scopri di più</a>
+    <a href="https://www.tiktok.com/@fiorelladellavalle" target="_blank" class="btn-rabbit">
+      <span class="rabbit">🐇</span> Scopri di più
+    </a>
   </div>
 </div>
+
 <footer>
   <p class="footer-label">Contatti</p>
   <div class="footer-links">
-    <a href="mailto:fiorelladellavalle@gmail.com" class="footer-link"><img src="assets/images/icon-mail.png" class="footer-icon" onerror="this.style.display='none'"/> fiorelladellavalle@gmail.com</a>
-    <a href="https://www.linkedin.com/in/fiorelladellavalle/" target="_blank" class="footer-link"><img src="assets/images/icon-linkedin.webp" class="footer-icon" onerror="this.style.display='none'"/> LinkedIn</a>
+    <a href="mailto:fiorelladellavalle@gmail.com" class="footer-link">
+      <img src="assets/images/icon-mail.png" class="footer-icon" onerror="this.style.display='none'"/> fiorelladellavalle@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/fiorelladellavalle/" target="_blank" class="footer-link">
+      <img src="assets/images/icon-linkedin.webp" class="footer-icon" onerror="this.style.display='none'"/> LinkedIn
+    </a>
   </div>
 </footer>
+
 <script>
 const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
 hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});
